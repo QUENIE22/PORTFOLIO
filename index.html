@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quenie Clarabal — Product Specialist</title>
+<meta name="description" content="Quenie Clarabal — Product Specialist based in Oroquieta City, Misamis Occidental. Builder of WasteLess, an expiry management system.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f4ece6;
+    --surface:#ece0d6;
+    --card:#fbf7f2;
+    --ink:#251d1a;
+    --muted:#867669;
+    --line:#e0d0c1;
+    --rose:#a15c6e;
+    --rose-dark:#82475a;
+    --sage:#7c8a6e;
+    --brass:#b98b4e;
+    --serif:'Fraunces', serif;
+    --sans:'Inter', sans-serif;
+    --maxw: 880px;
+    --maxw-wide: 1080px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+  }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; }
+  ::selection{ background:var(--rose); color:#fff; }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
+  .wrap-wide{ max-width:var(--maxw-wide); margin:0 auto; padding:0 28px; }
+
+  h1,h2,h3,h4{ margin:0; font-family:var(--serif); font-weight:500; line-height:1.12; }
+  p{ margin:0; }
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background:rgba(244,236,230,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw-wide);
+    margin:0 auto;
+    padding:18px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+  }
+  .brand{
+    text-decoration:none;
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:18px;
+    font-style:italic;
+  }
+  nav.primary{ display:flex; gap:26px; }
+  nav.primary button{
+    background:none; border:none; cursor:pointer;
+    font-family:var(--sans);
+    text-decoration:none;
+    font-size:13.5px;
+    color:var(--muted);
+    padding:4px 0;
+    border-bottom:1px solid transparent;
+    transition:color 0.15s ease, border-color 0.15s ease;
+  }
+  nav.primary button:hover, nav.primary button.active{ color:var(--rose); border-color:var(--rose); }
+
+  .nav-cta{
+    background:var(--rose);
+    color:#fff;
+    border:none;
+    cursor:pointer;
+    font-family:var(--sans);
+    font-size:13.5px;
+    padding:9px 18px;
+    white-space:nowrap;
+    transition:background 0.15s ease;
+  }
+  .nav-cta:hover{ background:var(--rose-dark); }
+
+  .burger{
+    display:none; flex-direction:column; gap:5px;
+    background:none; border:none; cursor:pointer; padding:6px;
+  }
+  .burger span{ width:20px; height:1.5px; background:var(--ink); display:block; }
+
+  /* ---------- Page shell / router ---------- */
+  main{ padding-top:78px; min-height:100vh; }
+  .page{ display:none; }
+  .page.active{ display:block; animation: fadein 0.4s ease both; }
+  @keyframes fadein{ from{ opacity:0; transform:translateY(8px);} to{ opacity:1; transform:translateY(0);} }
+
+  .page-header{
+    padding:64px 0 40px;
+    border-bottom:1px solid var(--line);
+  }
+  .back-link{
+    display:inline-flex; align-items:center; gap:6px;
+    text-decoration:none; font-size:13px; color:var(--muted);
+    margin-bottom:22px; background:none; border:none; cursor:pointer; font-family:var(--sans);
+  }
+  .back-link:hover{ color:var(--rose); }
+  .page-header .eyebrow{ font-size:13px; color:var(--rose); font-style:italic; font-family:var(--serif); margin-bottom:10px; }
+  .page-header h1{ font-size:clamp(30px,4vw,44px); }
+  .page-header p.lede{ margin-top:16px; max-width:58ch; color:var(--muted); font-family:var(--sans); font-size:15.5px; }
+  .page-body{ padding:64px 0 96px; }
+
+  /* ---------- Home / Hero ---------- */
+  .hero{ padding:150px 0 90px; }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1fr 260px;
+    gap:56px;
+    align-items:center;
+  }
+  .eyebrow-loc{
+    font-size:13.5px; color:var(--muted); margin-bottom:20px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .eyebrow-loc svg{ width:13px; height:13px; flex-shrink:0; }
+  .hero h1{ font-size:clamp(32px,5vw,54px); max-width:15ch; }
+  .hero h1 em{ color:var(--rose); font-style:italic; }
+  .hero-sub{ margin-top:24px; max-width:52ch; font-size:16.5px; color:var(--muted); }
+  .hero-actions{ margin-top:34px; display:flex; gap:16px; flex-wrap:wrap; }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    text-decoration:none; font-family:var(--sans); font-size:14px;
+    padding:12px 22px; border:none; cursor:pointer;
+    transition:all 0.15s ease;
+  }
+  .btn-solid{ background:var(--ink); color:var(--bg); }
+  .btn-solid:hover{ background:var(--rose); }
+  .btn-outline{ border:1px solid var(--ink); color:var(--ink); background:none; }
+  .btn-outline:hover{ background:var(--ink); color:var(--bg); }
+
+  .photo-frame{
+    width:100%;
+    aspect-ratio:3/4;
+    border-radius:6px;
+    overflow:hidden;
+    position:relative;
+    background: linear-gradient(155deg, var(--sage) 0%, var(--rose) 100%);
+    box-shadow: 0 22px 44px -20px rgba(37,29,26,0.35);
+  }
+  .photo-frame img{ width:100%; height:100%; object-fit:cover; }
+  .photo-fallback{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--serif); font-style:italic; font-size:56px; color:#fff;
+  }
+
+  /* ---------- Explore grid (nav buttons to pages) ---------- */
+  .explore{ padding:0 0 100px; }
+  .explore-head{ margin-bottom:36px; }
+  .explore-head .eyebrow{ font-size:13px; color:var(--rose); font-style:italic; font-family:var(--serif); margin-bottom:8px; }
+  .explore-head h2{ font-size:clamp(22px,2.6vw,28px); }
+
+  .explore-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+  }
+  .explore-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:28px 24px;
+    text-align:left;
+    cursor:pointer;
+    font-family:var(--sans);
+    transition:border-color 0.2s ease, transform 0.2s ease;
+  }
+  .explore-card:hover{ border-color:var(--rose); transform:translateY(-3px); }
+  .explore-card .num{ font-size:12px; color:var(--muted); }
+  .explore-card h3{ font-size:19px; margin:14px 0 8px; }
+  .explore-card p{ font-size:13.5px; color:var(--muted); }
+
+  /* ---------- Fact list (reused) ---------- */
+  .fact-list{ border-top:1px solid var(--line); }
+  .fact-row{
+    display:flex; justify-content:space-between; gap:20px;
+    padding:15px 0; border-bottom:1px solid var(--line); font-size:14px;
+  }
+  .fact-row dt{ color:var(--muted); }
+  .fact-row dd{ margin:0; text-align:right; font-weight:500; font-family:var(--sans); }
+
+  /* ---------- About page ---------- */
+  .about-grid{ display:grid; grid-template-columns:1.4fr 1fr; gap:60px; }
+  .about-copy p{ margin-bottom:18px; font-size:16px; color:#3a3028; }
+  .about-copy p:last-child{ margin-bottom:0; }
+  .about-copy strong{ font-weight:600; color:var(--ink); }
+
+  /* ---------- Journey page ---------- */
+  .tl-item{ display:grid; grid-template-columns:150px 1fr; gap:32px; padding:30px 0; border-bottom:1px solid var(--line); }
+  .tl-item:first-child{ padding-top:0; }
+  .tl-item:last-child{ border-bottom:none; }
+  .tl-year{ font-size:14px; color:var(--muted); padding-top:3px; }
+  .tl-role{ font-family:var(--serif); font-size:19px; }
+  .tl-org{ color:var(--muted); font-size:14px; margin-top:4px; }
+  .tl-desc{ margin-top:12px; font-size:14.5px; color:#3a3028; max-width:60ch; }
+  .tl-tag{ display:inline-block; margin-top:14px; font-size:12px; color:var(--sage); border-bottom:1px solid var(--sage); padding-bottom:1px; }
+
+  /* ---------- WasteLess page ---------- */
+  .project-panel{ display:grid; grid-template-columns:1.2fr 1fr; gap:56px; }
+  .project-panel h3{ font-size:24px; }
+  .project-panel > div > p{ margin-top:16px; font-size:15px; color:#3a3028; max-width:56ch; }
+  .chip-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:22px; }
+  .chip{ font-size:12px; border:1px solid var(--line); padding:5px 12px; color:var(--muted); }
+  .achieve-item{ display:flex; gap:16px; align-items:flex-start; border-top:1px solid var(--line); padding:20px 0; }
+  .achieve-item:first-child{ border-top:none; padding-top:0; }
+  .achieve-item .mark{ width:6px; height:6px; background:var(--rose); margin-top:8px; flex-shrink:0; border-radius:50%; }
+  .achieve-text b{ display:block; font-family:var(--serif); font-size:16px; margin-bottom:4px; }
+  .achieve-text span{ font-size:13.5px; color:var(--muted); }
+
+  /* ---------- Gallery page ---------- */
+  .gallery-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .g-item{ cursor:pointer; }
+  .g-item .thumb{
+    aspect-ratio:4/3; border:1px solid var(--line); background:var(--surface);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--muted); font-size:12px; transition:border-color 0.15s ease;
+  }
+  .g-item:hover .thumb{ border-color:var(--rose); }
+  .g-item .cap{ margin-top:10px; font-size:13px; color:var(--muted); }
+
+  /* ---------- Certificates page ---------- */
+  .cert-list{ border-top:1px solid var(--line); }
+  .cert-row{
+    display:grid; grid-template-columns:1fr 2fr auto; gap:24px; align-items:center;
+    padding:20px 0; border-bottom:1px solid var(--line); cursor:pointer;
+    transition:opacity 0.15s ease;
+  }
+  .cert-row:hover{ opacity:0.6; }
+  .cert-row h4{ font-family:var(--serif); font-size:16px; font-weight:500; }
+  .cert-row p{ font-size:13.5px; color:var(--muted); }
+  .cert-row .arrow{ font-size:14px; color:var(--brass); }
+
+  /* ---------- Blog page ---------- */
+  .blog-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:30px; }
+  .blog-card{ border-top:1px solid var(--line); padding-top:20px; }
+  .blog-date{ font-size:12.5px; color:var(--muted); }
+  .blog-card h4{ font-family:var(--serif); font-size:18px; margin:10px 0 10px; }
+  .blog-card p{ font-size:14px; color:#3a3028; }
+  .blog-read{ display:inline-block; margin-top:14px; font-size:13px; color:var(--rose); text-decoration:none; border-bottom:1px solid var(--rose); }
+
+  /* ---------- Resume page ---------- */
+  .resume-panel{ display:grid; grid-template-columns:1fr auto; align-items:center; gap:40px; background:var(--card); border:1px solid var(--line); padding:44px; }
+  .resume-panel h3{ font-size:22px; margin-bottom:10px; }
+  .resume-panel p{ color:var(--muted); font-size:14.5px; max-width:52ch; font-family:var(--sans); }
+
+  /* ---------- Contact page ---------- */
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; }
+  .social-row{ display:flex; gap:12px; margin-top:24px; flex-wrap:wrap; }
+  .social-row a{ text-decoration:none; border:1px solid var(--line); padding:8px 15px; font-size:13px; color:var(--muted); transition:all 0.15s ease; }
+  .social-row a:hover{ border-color:var(--rose); color:var(--rose); }
+
+  form{ display:flex; flex-direction:column; gap:16px; }
+  .field{ display:flex; flex-direction:column; gap:6px; }
+  .field label{ font-size:12.5px; color:var(--muted); }
+  .field input, .field textarea{
+    font-family:var(--sans); font-size:15px; padding:12px 0;
+    border:none; border-bottom:1px solid var(--line); background:transparent; color:var(--ink);
+  }
+  .field input:focus, .field textarea:focus{ outline:none; border-color:var(--rose); }
+  .field textarea{ resize:vertical; min-height:90px; }
+  .form-msg{ font-size:13px; color:var(--sage); min-height:18px; }
+
+  footer{ padding:32px 0; text-align:center; font-size:13px; color:var(--muted); border-top:1px solid var(--line); }
+
+  /* ---------- Lightbox ---------- */
+  .lightbox{ position:fixed; inset:0; background:rgba(37,29,26,0.85); display:none; align-items:center; justify-content:center; z-index:1000; padding:40px; }
+  .lightbox.open{ display:flex; }
+  .lightbox-box{ background:var(--bg); max-width:440px; width:100%; padding:36px; position:relative; }
+  .lightbox-box .mark{ width:8px; height:8px; background:var(--rose); margin-bottom:18px; border-radius:50%; }
+  .lightbox-box h4{ font-family:var(--serif); font-size:19px; margin-bottom:8px; }
+  .lightbox-box p{ color:var(--muted); font-size:14px; font-family:var(--sans); }
+  .lightbox-close{ position:absolute; top:14px; right:16px; background:none; border:none; font-size:20px; cursor:pointer; color:var(--muted); line-height:1; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    nav.primary, .nav-cta{ display:none; }
+    .burger{ display:flex; }
+    header.menu-open nav.primary{
+      display:flex; flex-direction:column;
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--bg); padding:20px 28px;
+      border-bottom:1px solid var(--line); gap:16px;
+    }
+    header.menu-open nav.primary button{ text-align:left; }
+    header.menu-open .nav-cta{ display:inline-flex; margin:16px 28px 20px; align-self:flex-start; }
+    .hero-grid{ grid-template-columns:1fr; }
+    .photo-frame{ max-width:220px; }
+    .about-grid, .contact-grid, .project-panel{ grid-template-columns:1fr; }
+    .project-panel > div:first-child{ order:1; }
+    .explore-grid{ grid-template-columns:1fr 1fr; }
+    .gallery-grid{ grid-template-columns:repeat(2,1fr); }
+    .cert-row{ grid-template-columns:1fr; gap:6px; }
+    .blog-grid{ grid-template-columns:1fr; }
+    .resume-panel{ grid-template-columns:1fr; text-align:left; }
+    .tl-item{ grid-template-columns:1fr; gap:6px; }
+  }
+  @media (max-width:560px){
+    .wrap, .wrap-wide{ padding:0 20px; }
+    .hero{ padding:130px 0 60px; }
+    .explore-grid{ grid-template-columns:1fr; }
+    .gallery-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="nav-inner">
+    <a href="#" class="brand" data-goto="home" onclick="return false;">Quenie Clarabal</a>
+    <nav class="primary">
+      <button data-goto="about">About</button>
+      <button data-goto="journey">Journey</button>
+      <button data-goto="wasteless">WasteLess</button>
+      <button data-goto="gallery">Gallery</button>
+      <button data-goto="certificates">Certificates</button>
+      <button data-goto="blog">Blog</button>
+      <button data-goto="resume">Resume</button>
+    </nav>
+    <button class="nav-cta" data-goto="contact">Say Hello</button>
+    <button class="burger" id="burgerBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="mainContent">
+
+  <!-- ================= HOME ================= -->
+  <div class="page active" id="page-home">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow-loc">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.5-7-12a7 7 0 1 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+            Oroquieta City, Misamis Occidental
+          </p>
+          <h1>Building products people <em>actually</em> keep using.</h1>
+          <p class="hero-sub">
+            I'm Quenie Clarabal, a Product Specialist at Nexen Innovation
+            Technologies Inc. since March 2026. Outside of that, I build,
+            pitch, and ship — most recently as co-creator of WasteLess, an
+            expiry management system.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-solid" data-goto="contact">Say Hello</button>
+            <button class="btn btn-outline" data-goto="resume">View Resume</button>
+          </div>
+        </div>
+        <div class="photo-frame">
+          <!-- Replace src below with your own photo, e.g. "profile.jpg" placed next to this HTML file -->
+          <img src="profile.jpg" alt="Quenie Clarabal" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="photo-fallback" style="display:none;">QC</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="explore">
+      <div class="wrap">
+        <div class="explore-head">
+          <div class="eyebrow">Explore</div>
+          <h2>A closer look, one page at a time.</h2>
+        </div>
+        <div class="explore-grid">
+          <button class="explore-card" data-goto="about">
+            <div class="num">01</div>
+            <h3>About</h3>
+            <p>Product mindset, a bit of code, and the finance roots underneath.</p>
+          </button>
+          <button class="explore-card" data-goto="journey">
+            <div class="num">02</div>
+            <h3>Journey</h3>
+            <p>From a lending office counter to product work.</p>
+          </button>
+          <button class="explore-card" data-goto="wasteless">
+            <div class="num">03</div>
+            <h3>WasteLess</h3>
+            <p>The expiry management system, and the pitching circuit around it.</p>
+          </button>
+          <button class="explore-card" data-goto="gallery">
+            <div class="num">04</div>
+            <h3>Gallery</h3>
+            <p>Moments from demo days, pitches, and panels.</p>
+          </button>
+          <button class="explore-card" data-goto="certificates">
+            <div class="num">05</div>
+            <h3>Certificates</h3>
+            <p>Recognitions, completions, and awards on record.</p>
+          </button>
+          <button class="explore-card" data-goto="blog">
+            <div class="num">06</div>
+            <h3>Blog</h3>
+            <p>Notes on product, pitching, and process.</p>
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= ABOUT ================= -->
+  <div class="page" id="page-about">
+    <div class="page-header wrap">
+      <button class="back-link" data-goto="home">&larr; Back to home</button>
+      <div class="eyebrow">About</div>
+      <h1>A product mindset, built the practical way.</h1>
+    </div>
+    <div class="page-body wrap">
+      <div class="about-grid">
+        <div class="about-copy">
+          <p>
+            I currently work as a <strong>Product Specialist at Nexen
+            Innovation Technologies Inc.</strong>, based here in Oroquieta
+            City, Misamis Occidental. My day-to-day sits at the intersection
+            of understanding what users actually need and translating that
+            into something a team can build.
+          </p>
+          <p>
+            I have a working, hands-on grasp of coding — enough to prototype
+            ideas, speak the same language as developers, and understand
+            what's realistic to ship. That foundation is what pushed me
+            toward building <strong>WasteLess</strong>, an expiry management
+            system, and taking it through incubation programs and pitching
+            competitions rather than leaving it as just an idea.
+          </p>
+          <p>
+            Before product, I spent time on the operations and finance side
+            of things — as an intern at a lending company, and earlier, as a
+            cashier and secretary. That background shows up in how I work
+            now: I care about the numbers behind a decision as much as the
+            idea itself.
+          </p>
+        </div>
+        <dl class="fact-list">
+          <div class="fact-row"><dt>Current role</dt><dd>Product Specialist</dd></div>
+          <div class="fact-row"><dt>Company</dt><dd>Nexen Innovation Technologies Inc.</dd></div>
+          <div class="fact-row"><dt>Since</dt><dd>March 2026</dd></div>
+          <div class="fact-row"><dt>Based in</dt><dd>Oroquieta City, Misamis Occidental</dd></div>
+          <div class="fact-row"><dt>Flagship project</dt><dd>WasteLess</dd></div>
+          <div class="fact-row"><dt>Recognition</dt><dd>Most Valuable Pitcher</dd></div>
+          <div class="fact-row"><dt>Also invited as</dt><dd>Pitching Panelist, USTP&ndash;Oroquieta</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= JOURNEY ================= -->
+  <div class="page" id="page-journey">
+    <div class="page-header wrap">
+      <button class="back-link" data-goto="home">&larr; Back to home</button>
+      <div class="eyebrow">Journey</div>
+      <h1>Where the experience comes from.</h1>
+      <p class="lede">From the counter of a lending office in Cavite to product work back home — the throughline has always been paying close attention to process.</p>
+    </div>
+    <div class="page-body wrap">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">March 2026 &mdash; Present</div>
+          <div>
+            <div class="tl-role">Product Specialist</div>
+            <div class="tl-org">Nexen Innovation Technologies Inc. &middot; Oroquieta City</div>
+            <p class="tl-desc">Own the connection between user needs and product decisions — researching, refining requirements, and working closely with the build team to ship features that hold up in the real world.</p>
+            <span class="tl-tag">Current</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">Jan &mdash; Feb 2026</div>
+          <div>
+            <div class="tl-role">Intern</div>
+            <div class="tl-org">Reynaldo Financing Services Corporation</div>
+            <p class="tl-desc">Supported day-to-day lending operations, getting a close look at how financial products are administered, documented, and serviced for real clients.</p>
+            <span class="tl-tag">Lending &amp; Finance</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2019 &mdash; 2021</div>
+          <div>
+            <div class="tl-role">Cashier / Secretary</div>
+            <div class="tl-org">RRR Lending Company &middot; Dasmari&ntilde;as, Cavite</div>
+            <p class="tl-desc">Handled cash transactions, client records, and day-to-day office administration — the first place I learned that good process is what makes an operation trustworthy.</p>
+            <span class="tl-tag">Foundational Role</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= WASTELESS ================= -->
+  <div class="page" id="page-wasteless">
+    <div class="page-header wrap">
+      <button class="back-link" data-goto="home">&larr; Back to home</button>
+      <div class="eyebrow">Flagship Project</div>
+      <h1>WasteLess — an expiry management system.</h1>
+    </div>
+    <div class="page-body wrap">
+      <div class="project-panel">
+        <div>
+          <h3>Less waste, tracked before it happens.</h3>
+          <p>
+            WasteLess is an expiry management system built to help households
+            and small businesses keep track of products before they go to
+            waste — catching expiry dates early instead of finding out too
+            late. I helped take it from a rough idea through multiple
+            incubation programs and pitching competitions.
+          </p>
+          <div class="chip-row">
+            <span class="chip">Expiry Tracking</span>
+            <span class="chip">Inventory</span>
+            <span class="chip">Sustainability</span>
+            <span class="chip">Startup Incubation</span>
+          </div>
+        </div>
+        <div class="achieve-list">
+          <div class="achieve-item">
+            <span class="mark"></span>
+            <div class="achieve-text">
+              <b>Most Valuable Pitcher</b>
+              <span>Awarded across multiple incubation &amp; pitching competitions for WasteLess.</span>
+            </div>
+          </div>
+          <div class="achieve-item">
+            <span class="mark"></span>
+            <div class="achieve-text">
+              <b>Invited Panelist</b>
+              <span>USTP &ndash; Oroquieta Campus, judging a student pitching competition.</span>
+            </div>
+          </div>
+          <div class="achieve-item">
+            <span class="mark"></span>
+            <div class="achieve-text">
+              <b>Startup Incubation Programs</b>
+              <span>Took WasteLess through structured incubation to sharpen the product and business case.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= GALLERY ================= -->
+  <div class="page" id="page-gallery">
+    <div class="page-header wrap">
+      <button class="back-link" data-goto="home">&larr; Back to home</button>
+      <div class="eyebrow">Gallery</div>
+      <h1>Moments from the pitch floor.</h1>
+      <p class="lede">Placeholder tiles below — swap in your own event photos (see comment near <code>galleryData</code> in the script).</p>
+    </div>
+    <div class="page-body wrap">
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </div>
+
+  <!-- ================= CERTIFICATES ================= -->
+  <div class="page" id="page-certificates">
+    <div class="page-header wrap">
+      <button class="back-link" data-goto="home">&larr; Back to home</button>
+      <div class="eyebrow">Certificates</div>
+      <h1>Paper trail of the pitching circuit.</h1>
+    </div>
+    <div class="page-body wrap">
+      <div class="cert-list" id="certList"></div>
+    </div>
+  </div>
+
+  <!-- ================= BLOG ================= -->
+  <div class="page" id="page-blog">
+    <div class="page-header wrap-wide">
+      <button class="back-link" data-goto="home">&larr; Back to home</button>
+      <div class="eyebrow">Blog</div>
+      <h1>Notes on product, pitching, and process.</h1>
+    </div>
+    <div class="page-body wrap-wide">
+      <div class="blog-grid">
+        <article class="blog-card">
+          <div class="blog-date">Placeholder post</div>
+          <h4>What judging a pitch competition taught me about my own pitch</h4>
+          <p>Reflections from sitting on the panel at USTP&ndash;Oroquieta after years of being on the other side of the table.</p>
+          <a href="#" class="blog-read">Read more &rarr;</a>
+        </article>
+        <article class="blog-card">
+          <div class="blog-date">Placeholder post</div>
+          <h4>Turning WasteLess from an idea into an incubated product</h4>
+          <p>What actually changed between the first pitch deck and the version that won Most Valuable Pitcher.</p>
+          <a href="#" class="blog-read">Read more &rarr;</a>
+        </article>
+        <article class="blog-card">
+          <div class="blog-date">Placeholder post</div>
+          <h4>From a lending office counter to product management</h4>
+          <p>Why the operational discipline from a cashier's window still shapes how I scope features today.</p>
+          <a href="#" class="blog-read">Read more &rarr;</a>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= RESUME ================= -->
+  <div class="page" id="page-resume">
+    <div class="page-header wrap">
+      <button class="back-link" data-goto="home">&larr; Back to home</button>
+      <div class="eyebrow">Resume</div>
+      <h1>The short version, on paper.</h1>
+    </div>
+    <div class="page-body wrap">
+      <div class="resume-panel">
+        <div>
+          <h3>Download the full resume</h3>
+          <p>Covers product work at Nexen Innovation Technologies Inc., the WasteLess journey, and prior roles in lending and operations. Replace the link below with your actual resume file.</p>
+        </div>
+        <a href="resume.pdf" download class="btn btn-solid">Download Resume</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= CONTACT ================= -->
+  <div class="page" id="page-contact">
+    <div class="page-header wrap">
+      <button class="back-link" data-goto="home">&larr; Back to home</button>
+      <div class="eyebrow">Say Hello</div>
+      <h1>Have a product, a pitch, or just a hello?</h1>
+    </div>
+    <div class="page-body wrap">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <dl class="fact-list">
+            <div class="fact-row"><dt>Email</dt><dd>you@example.com</dd></div>
+            <div class="fact-row"><dt>Location</dt><dd>Oroquieta City, Misamis Occidental</dd></div>
+            <div class="fact-row"><dt>Currently</dt><dd>Product Specialist, Nexen Innovation Technologies Inc.</dd></div>
+          </dl>
+          <div class="social-row">
+            <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="#" target="_blank" rel="noopener">Facebook</a>
+            <a href="#" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+        <form id="contactForm">
+          <div class="field">
+            <label for="cf-name">Name</label>
+            <input id="cf-name" name="name" type="text" required>
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" required>
+          </div>
+          <div class="field">
+            <label for="cf-msg">Message</label>
+            <textarea id="cf-msg" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-solid" style="align-self:flex-start;">Send Message</button>
+          <p class="form-msg" id="formMsg"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap-wide">
+    &copy; <span id="year"></span> Quenie Clarabal &middot; Oroquieta City, Misamis Occidental
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-box">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <span class="mark"></span>
+    <h4 id="lbTitle"></h4>
+    <p id="lbDesc"></p>
+  </div>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- Page router ---------- */
+  const pages = document.querySelectorAll('.page');
+  const navButtons = document.querySelectorAll('[data-goto]');
+  const header = document.getElementById('siteHeader');
+
+  function showPage(id){
+    pages.forEach(p => p.classList.toggle('active', p.id === 'page-' + id));
+    document.querySelectorAll('nav.primary button').forEach(b=>{
+      b.classList.toggle('active', b.dataset.goto === id);
+    });
+    window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+    history.replaceState(null, '', '#' + id);
+    header.classList.remove('menu-open');
+  }
+
+  navButtons.forEach(btn=>{
+    btn.addEventListener('click', ()=> showPage(btn.dataset.goto));
+  });
+
+  window.addEventListener('hashchange', ()=>{
+    const id = location.hash.replace('#','') || 'home';
+    if(document.getElementById('page-' + id)) showPage(id);
+  });
+
+  const initial = location.hash.replace('#','');
+  if(initial && document.getElementById('page-' + initial)){
+    showPage(initial);
+  }
+
+  /* ---------- Mobile menu ---------- */
+  const burger = document.getElementById('burgerBtn');
+  burger.addEventListener('click', () => header.classList.toggle('menu-open'));
+
+  /* ---------- Gallery + Certificates data ----
+     Replace the placeholder thumb with a real <img src="images/your-photo.jpg">
+     once you have real photos — swap the g-item render below accordingly. */
+  const galleryData = [
+    { title: 'Incubation Demo Day', desc: 'Presenting WasteLess during a demo day session.' },
+    { title: 'Pitch Competition Final', desc: 'On stage for the final round of a regional pitching competition.' },
+    { title: 'Team Working Session', desc: 'Working through the WasteLess product flow with the team.' },
+    { title: 'Award Moment', desc: 'Receiving the Most Valuable Pitcher recognition.' },
+    { title: 'USTP-Oroquieta Panel', desc: 'Seated as an invited panelist for a student pitching event.' },
+    { title: 'Prototype Walkthrough', desc: 'Walking judges through the WasteLess prototype.' },
+  ];
+
+  const certData = [
+    { title: 'Most Valuable Pitcher', desc: 'Awarded for WasteLess at a regional pitching competition.' },
+    { title: 'Incubation Program Completion', desc: 'Certificate of completion for a startup incubation program.' },
+    { title: 'Panelist Recognition', desc: 'USTP\u2013Oroquieta Campus pitching competition, invited panelist.' },
+    { title: 'Pitching Competition Finalist', desc: 'Recognized as a finalist presenting WasteLess.' },
+    { title: 'Product Management Training', desc: 'Certificate for completed product-focused training or workshop.' },
+    { title: 'Lending Operations Orientation', desc: 'Certificate from onboarding/orientation in financial operations.' },
+  ];
+
+  const galleryGrid = document.getElementById('galleryGrid');
+  galleryData.forEach(item=>{
+    const el = document.createElement('div');
+    el.className = 'g-item';
+    el.innerHTML = `<div class="thumb">Photo placeholder</div><div class="cap">${item.title}</div>`;
+    el.addEventListener('click', ()=> openLightbox(item.title, item.desc));
+    galleryGrid.appendChild(el);
+  });
+
+  const certList = document.getElementById('certList');
+  certData.forEach(item=>{
+    const el = document.createElement('div');
+    el.className = 'cert-row';
+    el.innerHTML = `<h4>${item.title}</h4><p>${item.desc}</p><span class="arrow">View &rarr;</span>`;
+    el.addEventListener('click', ()=> openLightbox(item.title, item.desc));
+    certList.appendChild(el);
+  });
+
+  /* ---------- Lightbox logic ---------- */
+  const lightbox = document.getElementById('lightbox');
+  const lbTitle = document.getElementById('lbTitle');
+  const lbDesc = document.getElementById('lbDesc');
+  function openLightbox(title, desc){
+    lbTitle.textContent = title;
+    lbDesc.textContent = desc;
+    lightbox.classList.add('open');
+  }
+  document.getElementById('lightboxClose').addEventListener('click', ()=> lightbox.classList.remove('open'));
+  lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) lightbox.classList.remove('open'); });
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') lightbox.classList.remove('open'); });
+
+  /* ---------- Contact form (front-end only; wire up to a real endpoint/mailto as needed) ---------- */
+  const form = document.getElementById('contactForm');
+  const formMsg = document.getElementById('formMsg');
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    formMsg.textContent = 'Thanks for reaching out — I\'ll get back to you soon.';
+    form.reset();
+  });
+</script>
+</body>
+</html>
