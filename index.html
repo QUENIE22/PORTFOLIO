@@ -760,7 +760,7 @@
   galleryData.forEach(item=>{
     const el = document.createElement('div');
     el.className = 'g-item';
-    el.innerHTML = `<div class=<img src="profile.png">>Photo placeholder</div><div class="cap">${item.title}</div>`;
+    el.innerHTML = `<div class="thumb"><img src="solo.jpg">>Photo placeholder</div><div class="cap">${item.title}</div>`;
     el.addEventListener('click', ()=> openLightbox(item.title, item.desc));
     galleryGrid.appendChild(el);
   });
