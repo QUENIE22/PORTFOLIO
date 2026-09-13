@@ -739,8 +739,8 @@
      Replace the placeholder thumb with a real <img src="images/your-photo.jpg">
      once you have real photos — swap the g-item render below accordingly. */
   const galleryData = [
-    { title: 'Incubation Demo Day', desc: 'Presenting WasteLess during a demo day session.' },
-    { title: 'Pitch Competition Final', desc: 'On stage for the final round of a regional pitching competition.' },
+    { title: 'Incubation Demo Day', desc: 'Presenting WasteLess during a demo day session.',image: 'demoday.jpeg' },
+    { title: 'Pitch Competition Final', desc: 'On stage for the final round of a regional pitching competition.', image: 'solo.jpg' },
     { title: 'Team Working Session', desc: 'Working through the WasteLess product flow with the team.' },
     { title: 'Award Moment', desc: 'Receiving the Most Valuable Pitcher recognition.' },
     { title: 'USTP-Oroquieta Panel', desc: 'Seated as an invited panelist for a student pitching event.' },
@@ -760,7 +760,7 @@
   galleryData.forEach(item=>{
     const el = document.createElement('div');
     el.className = 'g-item';
-    el.innerHTML = `<div class="thumb"><img src="solo.jpg">>Photo placeholder</div><div class="cap">${item.title}</div>`;
+    el.innerHTML = `<div class="thumb"><Photo placeholder</div><div class="cap">${item.title}</div>`;
     el.addEventListener('click', ()=> openLightbox(item.title, item.desc));
     galleryGrid.appendChild(el);
   });
