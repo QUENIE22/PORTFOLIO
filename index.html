@@ -41,6 +41,7 @@
     font-size:16px;
     line-height:1.65;
     -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
 
   img{ max-width:100%; display:block; }
@@ -106,7 +107,7 @@
 
   .burger{
     display:none; flex-direction:column; gap:5px;
-    background:none; border:none; cursor:pointer; padding:6px;
+    background:none; border:none; cursor:pointer; padding:8px;
   }
   .burger span{ width:20px; height:1.5px; background:var(--ink); display:block; }
 
@@ -127,7 +128,7 @@
   }
   .back-link:hover{ color:var(--rose); }
   .page-header .eyebrow{ font-size:13px; color:var(--rose); font-style:italic; font-family:var(--serif); margin-bottom:10px; }
-  .page-header h1{ font-size:clamp(30px,4vw,44px); }
+  .page-header h1{ font-size:clamp(28px,4vw,44px); }
   .page-header p.lede{ margin-top:16px; max-width:58ch; color:var(--muted); font-family:var(--sans); font-size:15.5px; }
   .page-body{ padding:64px 0 96px; }
 
@@ -144,7 +145,7 @@
     display:flex; align-items:center; gap:8px;
   }
   .eyebrow-loc svg{ width:13px; height:13px; flex-shrink:0; }
-  .hero h1{ font-size:clamp(32px,5vw,54px); max-width:15ch; }
+  .hero h1{ font-size:clamp(30px,5vw,54px); max-width:15ch; }
   .hero h1 em{ color:var(--rose); font-style:italic; }
   .hero-sub{ margin-top:24px; max-width:52ch; font-size:16.5px; color:var(--muted); }
   .hero-actions{ margin-top:34px; display:flex; gap:16px; flex-wrap:wrap; }
@@ -162,6 +163,8 @@
 
   .photo-frame{
     width:100%;
+    max-width:260px;
+    margin:0 auto;
     aspect-ratio:3/4;
     border-radius:6px;
     overflow:hidden;
@@ -195,6 +198,7 @@
     cursor:pointer;
     font-family:var(--sans);
     transition:border-color 0.2s ease, transform 0.2s ease;
+    width:100%;
   }
   .explore-card:hover{ border-color:var(--rose); transform:translateY(-3px); }
   .explore-card .num{ font-size:12px; color:var(--muted); }
@@ -206,6 +210,7 @@
   .fact-row{
     display:flex; justify-content:space-between; gap:20px;
     padding:15px 0; border-bottom:1px solid var(--line); font-size:14px;
+    flex-wrap:wrap;
   }
   .fact-row dt{ color:var(--muted); }
   .fact-row dd{ margin:0; text-align:right; font-weight:500; font-family:var(--sans); }
@@ -245,21 +250,29 @@
     aspect-ratio:4/3; border:1px solid var(--line); background:var(--surface);
     display:flex; align-items:center; justify-content:center;
     color:var(--muted); font-size:12px; transition:border-color 0.15s ease;
+    overflow:hidden;
   }
+  .g-item .thumb img{ width:100%; height:100%; object-fit:cover; }
   .g-item:hover .thumb{ border-color:var(--rose); }
   .g-item .cap{ margin-top:10px; font-size:13px; color:var(--muted); }
 
   /* ---------- Certificates page ---------- */
   .cert-list{ border-top:1px solid var(--line); }
   .cert-row{
-    display:grid; grid-template-columns:1fr 2fr auto; gap:24px; align-items:center;
+    display:grid; grid-template-columns:110px 1fr 1.6fr auto; gap:20px; align-items:center;
     padding:20px 0; border-bottom:1px solid var(--line); cursor:pointer;
     transition:opacity 0.15s ease;
   }
   .cert-row:hover{ opacity:0.6; }
+  .cert-row .cert-thumb{
+    width:100%; aspect-ratio:4/3; border:1px solid var(--line); background:var(--surface);
+    overflow:hidden; display:flex; align-items:center; justify-content:center;
+    color:var(--muted); font-size:11px;
+  }
+  .cert-row .cert-thumb img{ width:100%; height:100%; object-fit:cover; }
   .cert-row h4{ font-family:var(--serif); font-size:16px; font-weight:500; }
   .cert-row p{ font-size:13.5px; color:var(--muted); }
-  .cert-row .arrow{ font-size:14px; color:var(--brass); }
+  .cert-row .arrow{ font-size:14px; color:var(--brass); white-space:nowrap; }
 
   /* ---------- Blog page ---------- */
   .blog-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:30px; }
@@ -286,6 +299,7 @@
   .field input, .field textarea{
     font-family:var(--sans); font-size:15px; padding:12px 0;
     border:none; border-bottom:1px solid var(--line); background:transparent; color:var(--ink);
+    width:100%;
   }
   .field input:focus, .field textarea:focus{ outline:none; border-color:var(--rose); }
   .field textarea{ resize:vertical; min-height:90px; }
@@ -294,15 +308,20 @@
   footer{ padding:32px 0; text-align:center; font-size:13px; color:var(--muted); border-top:1px solid var(--line); }
 
   /* ---------- Lightbox ---------- */
-  .lightbox{ position:fixed; inset:0; background:rgba(37,29,26,0.85); display:none; align-items:center; justify-content:center; z-index:1000; padding:40px; }
+  .lightbox{ position:fixed; inset:0; background:rgba(37,29,26,0.85); display:none; align-items:center; justify-content:center; z-index:1000; padding:24px; }
   .lightbox.open{ display:flex; }
-  .lightbox-box{ background:var(--bg); max-width:440px; width:100%; padding:36px; position:relative; }
+  .lightbox-box{ background:var(--bg); max-width:480px; width:100%; max-height:90vh; overflow-y:auto; padding:32px; position:relative; }
   .lightbox-box .mark{ width:8px; height:8px; background:var(--rose); margin-bottom:18px; border-radius:50%; }
+  .lightbox-box .lb-img{ width:100%; max-height:320px; object-fit:cover; margin-bottom:18px; display:none; border-radius:2px; }
   .lightbox-box h4{ font-family:var(--serif); font-size:19px; margin-bottom:8px; }
   .lightbox-box p{ color:var(--muted); font-size:14px; font-family:var(--sans); }
-  .lightbox-close{ position:absolute; top:14px; right:16px; background:none; border:none; font-size:20px; cursor:pointer; color:var(--muted); line-height:1; }
+  .lightbox-close{ position:absolute; top:12px; right:14px; background:none; border:none; font-size:22px; cursor:pointer; color:var(--muted); line-height:1; padding:6px; }
 
-  /* ---------- Responsive ---------- */
+  /* ==================================================================
+     RESPONSIVE
+     ================================================================== */
+
+  /* Tablet */
   @media (max-width:900px){
     nav.primary, .nav-cta{ display:none; }
     .burger{ display:flex; }
@@ -312,24 +331,51 @@
       background:var(--bg); padding:20px 28px;
       border-bottom:1px solid var(--line); gap:16px;
     }
-    header.menu-open nav.primary button{ text-align:left; }
+    header.menu-open nav.primary button{ text-align:left; font-size:15px; padding:6px 0; }
     header.menu-open .nav-cta{ display:inline-flex; margin:16px 28px 20px; align-self:flex-start; }
-    .hero-grid{ grid-template-columns:1fr; }
-    .photo-frame{ max-width:220px; }
-    .about-grid, .contact-grid, .project-panel{ grid-template-columns:1fr; }
+
+    .hero{ padding:140px 0 70px; }
+    .hero-grid{ grid-template-columns:1fr; gap:40px; }
+    .hero-grid > div:first-child{ order:2; text-align:center; }
+    .hero-grid > .photo-frame{ order:1; }
+    .eyebrow-loc{ justify-content:center; }
+    .hero h1{ max-width:none; }
+    .hero-actions{ justify-content:center; }
+
+    .about-grid, .contact-grid, .project-panel{ grid-template-columns:1fr; gap:40px; }
     .project-panel > div:first-child{ order:1; }
+
     .explore-grid{ grid-template-columns:1fr 1fr; }
     .gallery-grid{ grid-template-columns:repeat(2,1fr); }
-    .cert-row{ grid-template-columns:1fr; gap:6px; }
-    .blog-grid{ grid-template-columns:1fr; }
-    .resume-panel{ grid-template-columns:1fr; text-align:left; }
+    .blog-grid{ grid-template-columns:1fr 1fr; }
+
+    .cert-row{ grid-template-columns:80px 1fr; gap:14px; }
+    .cert-row .arrow{ display:none; }
+
+    .resume-panel{ grid-template-columns:1fr; text-align:left; gap:24px; }
     .tl-item{ grid-template-columns:1fr; gap:6px; }
   }
+
+  /* Mobile */
   @media (max-width:560px){
     .wrap, .wrap-wide{ padding:0 20px; }
-    .hero{ padding:130px 0 60px; }
+    .nav-inner{ padding:14px 20px; }
+    .hero{ padding:120px 0 56px; }
     .explore-grid{ grid-template-columns:1fr; }
     .gallery-grid{ grid-template-columns:1fr; }
+    .blog-grid{ grid-template-columns:1fr; }
+    .page-header{ padding:48px 0 32px; }
+    .page-body{ padding:48px 0 72px; }
+    .resume-panel{ padding:28px; }
+    .project-panel{ gap:32px; }
+    .photo-frame{ max-width:200px; }
+  }
+
+  /* Very small phones */
+  @media (max-width:380px){
+    .wrap, .wrap-wide{ padding:0 16px; }
+    .hero h1{ font-size:28px; }
+    .btn{ padding:11px 18px; font-size:13.5px; }
   }
 </style>
 </head>
@@ -378,8 +424,8 @@
           </div>
         </div>
         <div class="photo-frame">
-          <!-- Replace src below with your own photo, e.g. "profile.jpg" placed next to this HTML file -->
-          <img src="profile.png" alt="Quenie Clarabal" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <!-- EDIT HERE: replace "profile.jpg" with your own photo file placed next to this HTML file -->
+          <img src="profile.jpg" alt="Quenie Clarabal" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="photo-fallback" style="display:none;">QC</div>
         </div>
       </div>
@@ -572,7 +618,7 @@
       <button class="back-link" data-goto="home">&larr; Back to home</button>
       <div class="eyebrow">Gallery</div>
       <h1>Moments from the pitch floor.</h1>
-      <p class="lede">Placeholder tiles below — swap in your own event photos (see comment near <code>galleryData</code> in the script).</p>
+      <p class="lede">Each tile below is wired to its own photo file — see <code>galleryData</code> near the bottom of the script.</p>
     </div>
     <div class="page-body wrap">
       <div class="gallery-grid" id="galleryGrid"></div>
@@ -635,7 +681,7 @@
           <h3>Download the full resume</h3>
           <p>Covers product work at Nexen Innovation Technologies Inc., the WasteLess journey, and prior roles in lending and operations. Replace the link below with your actual resume file.</p>
         </div>
-        <a href="RESUME.pdf" download class="btn btn-solid">Download Resume</a>
+        <a href="resume.pdf" download class="btn btn-solid">Download Resume</a>
       </div>
     </div>
   </div>
@@ -651,12 +697,12 @@
       <div class="contact-grid">
         <div class="contact-info">
           <dl class="fact-list">
-            <div class="fact-row"><dt>Email</dt><dd>quenieclarabal374@example.com</dd></div>
+            <div class="fact-row"><dt>Email</dt><dd>you@example.com</dd></div>
             <div class="fact-row"><dt>Location</dt><dd>Oroquieta City, Misamis Occidental</dd></div>
             <div class="fact-row"><dt>Currently</dt><dd>Product Specialist, Nexen Innovation Technologies Inc.</dd></div>
           </dl>
           <div class="social-row">
-            <a href="www.linkedin.com/in/quenie-clarabal-3561743b3" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="#" target="_blank" rel="noopener">LinkedIn</a>
             <a href="#" target="_blank" rel="noopener">Facebook</a>
             <a href="#" target="_blank" rel="noopener">GitHub</a>
           </div>
@@ -693,7 +739,8 @@
 <div class="lightbox" id="lightbox">
   <div class="lightbox-box">
     <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
-    <span class="mark"></span>
+    <img class="lb-img" id="lbImg" alt="">
+    <span class="mark" id="lbMark"></span>
     <h4 id="lbTitle"></h4>
     <p id="lbDesc"></p>
   </div>
@@ -712,7 +759,7 @@
     document.querySelectorAll('nav.primary button').forEach(b=>{
       b.classList.toggle('active', b.dataset.goto === id);
     });
-    window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+    window.scrollTo({ top: 0, behavior: 'auto' });
     history.replaceState(null, '', '#' + id);
     header.classList.remove('menu-open');
   }
@@ -736,32 +783,35 @@
   burger.addEventListener('click', () => header.classList.toggle('menu-open'));
 
   /* ---------- Gallery + Certificates data ----
-     Replace the placeholder thumb with a real <img src="images/your-photo.jpg">
-     once you have real photos — swap the g-item render below accordingly. */
+     EDIT HERE: give each event / certificate its own "image" filename.
+     Put the actual image files in an "images" folder next to this HTML file
+     (or change the path below to wherever you keep them).
+     If an "image" is left blank or the file is missing, it falls back to a
+     plain placeholder automatically — nothing breaks. */
   const galleryData = [
-    { title: 'Incubation Demo Day', desc: 'Presenting WasteLess during a demo day session.',image: 'demoday.jpeg' },
-    { title: 'Pitch Competition Final', desc: 'On stage for the final round of a regional pitching competition.', image: 'solo.jpg' },
-    { title: 'Team Working Session', desc: 'Working through the WasteLess product flow with the team.' },
-    { title: 'Award Moment', desc: 'Receiving the Most Valuable Pitcher recognition.' },
-    { title: 'USTP-Oroquieta Panel', desc: 'Seated as an invited panelist for a student pitching event.' },
-    { title: 'Prototype Walkthrough', desc: 'Walking judges through the WasteLess prototype.' },
+    { title: 'Incubation Demo Day', desc: 'Presenting WasteLess during a demo day session.', image: 'images/demo-day.jpg' },
+    { title: 'Pitch Competition Final', desc: 'On stage for the final round of a regional pitching competition.', image: 'images/pitch-final.jpg' },
+    { title: 'Team Working Session', desc: 'Working through the WasteLess product flow with the team.', image: 'images/team-session.jpg' },
+    { title: 'Award Moment', desc: 'Receiving the Most Valuable Pitcher recognition.', image: 'images/award-moment.jpg' },
+    { title: 'USTP-Oroquieta Panel', desc: 'Seated as an invited panelist for a student pitching event.', image: 'images/ustp-panel.jpg' },
+    { title: 'Prototype Walkthrough', desc: 'Walking judges through the WasteLess prototype.', image: 'images/prototype-walkthrough.jpg' },
   ];
 
   const certData = [
-    { title: 'Most Valuable Pitcher', desc: 'Awarded for WasteLess at a regional pitching competition.' },
-    { title: 'Incubation Program Completion', desc: 'Certificate of completion for a startup incubation program.' },
-    { title: 'Panelist Recognition', desc: 'USTP\u2013Oroquieta Campus pitching competition, invited panelist.' },
-    { title: 'Pitching Competition Finalist', desc: 'Recognized as a finalist presenting WasteLess.' },
-    { title: 'Product Management Training', desc: 'Certificate for completed product-focused training or workshop.' },
-    { title: 'Lending Operations Orientation', desc: 'Certificate from onboarding/orientation in financial operations.' },
+    { title: 'Most Valuable Pitcher', desc: 'Awarded for WasteLess at a regional pitching competition.', image: 'images/cert-mvp.jpg' },
+    { title: 'Incubation Program Completion', desc: 'Certificate of completion for a startup incubation program.', image: 'images/cert-incubation.jpg' },
+    { title: 'Panelist Recognition', desc: 'USTP\u2013Oroquieta Campus pitching competition, invited panelist.', image: 'images/cert-panelist.jpg' },
+    { title: 'Pitching Competition Finalist', desc: 'Recognized as a finalist presenting WasteLess.', image: 'images/cert-finalist.jpg' },
+    { title: 'Product Management Training', desc: 'Certificate for completed product-focused training or workshop.', image: 'images/cert-pm-training.jpg' },
+    { title: 'Lending Operations Orientation', desc: 'Certificate from onboarding/orientation in financial operations.', image: 'images/cert-lending.jpg' },
   ];
 
   const galleryGrid = document.getElementById('galleryGrid');
   galleryData.forEach(item=>{
     const el = document.createElement('div');
     el.className = 'g-item';
-    el.innerHTML = `<div class="thumb"><Photo placeholder</div><div class="cap">${item.title}</div>`;
-    el.addEventListener('click', ()=> openLightbox(item.title, item.desc));
+    el.innerHTML = `<div class="thumb"><img src="${item.image}" alt="${item.title}" onerror="this.remove(); this.parentElement.textContent='Photo placeholder';"></div><div class="cap">${item.title}</div>`;
+    el.addEventListener('click', ()=> openLightbox(item.title, item.desc, item.image));
     galleryGrid.appendChild(el);
   });
 
@@ -769,8 +819,8 @@
   certData.forEach(item=>{
     const el = document.createElement('div');
     el.className = 'cert-row';
-    el.innerHTML = `<h4>${item.title}</h4><p>${item.desc}</p><span class="arrow">View &rarr;</span>`;
-    el.addEventListener('click', ()=> openLightbox(item.title, item.desc));
+    el.innerHTML = `<div class="cert-thumb"><img src="${item.image}" alt="${item.title}" onerror="this.remove(); this.parentElement.textContent='No image';"></div><h4>${item.title}</h4><p>${item.desc}</p><span class="arrow">View &rarr;</span>`;
+    el.addEventListener('click', ()=> openLightbox(item.title, item.desc, item.image));
     certList.appendChild(el);
   });
 
@@ -778,9 +828,20 @@
   const lightbox = document.getElementById('lightbox');
   const lbTitle = document.getElementById('lbTitle');
   const lbDesc = document.getElementById('lbDesc');
-  function openLightbox(title, desc){
+  const lbImg = document.getElementById('lbImg');
+  const lbMark = document.getElementById('lbMark');
+  function openLightbox(title, desc, image){
     lbTitle.textContent = title;
     lbDesc.textContent = desc;
+    if(image){
+      lbImg.src = image;
+      lbImg.style.display = 'block';
+      lbMark.style.display = 'none';
+      lbImg.onerror = ()=>{ lbImg.style.display = 'none'; lbMark.style.display = 'block'; };
+    } else {
+      lbImg.style.display = 'none';
+      lbMark.style.display = 'block';
+    }
     lightbox.classList.add('open');
   }
   document.getElementById('lightboxClose').addEventListener('click', ()=> lightbox.classList.remove('open'));
