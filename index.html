@@ -118,7 +118,8 @@
   @keyframes fadein{ from{ opacity:0; transform:translateY(8px);} to{ opacity:1; transform:translateY(0);} }
 
   .page-header{
-    padding:64px 0 40px;
+    padding-top:64px;
+    padding-bottom:40px;
     border-bottom:1px solid var(--line);
   }
   .back-link{
@@ -130,7 +131,7 @@
   .page-header .eyebrow{ font-size:13px; color:var(--rose); font-style:italic; font-family:var(--serif); margin-bottom:10px; }
   .page-header h1{ font-size:clamp(28px,4vw,44px); }
   .page-header p.lede{ margin-top:16px; max-width:58ch; color:var(--muted); font-family:var(--sans); font-size:15.5px; }
-  .page-body{ padding:64px 0 96px; }
+  .page-body{ padding-top:64px; padding-bottom:96px; }
 
   /* ---------- Home / Hero ---------- */
   .hero{ padding:150px 0 90px; }
@@ -358,14 +359,14 @@
 
   /* Mobile */
   @media (max-width:560px){
-    .wrap, .wrap-wide{ padding:0 24px; }
-    .nav-inner{ padding:16px 24px; }
+    .wrap, .wrap-wide{ padding:0 26px; }
+    .nav-inner{ padding:16px 26px; }
     .hero{ padding:120px 0 56px; }
     .explore-grid{ grid-template-columns:1fr; }
     .gallery-grid{ grid-template-columns:1fr; }
     .blog-grid{ grid-template-columns:1fr; }
-    .page-header{ padding:48px 0 32px; }
-    .page-body{ padding:48px 0 72px; }
+    .page-header{ padding-top:48px; padding-bottom:32px; }
+    .page-body{ padding-top:48px; padding-bottom:72px; }
     .resume-panel{ padding:28px; }
     .project-panel{ gap:32px; }
     .photo-frame{ max-width:200px; }
@@ -373,7 +374,7 @@
 
   /* Very small phones */
   @media (max-width:380px){
-    .wrap, .wrap-wide{ padding:0 20px; }
+    .wrap, .wrap-wide{ padding:0 22px; }
     .hero h1{ font-size:28px; }
     .btn{ padding:11px 18px; font-size:13.5px; }
   }
@@ -424,7 +425,7 @@
           </div>
         </div>
         <div class="photo-frame">
-          <!-- EDIT HERE: replace "profile.jpg" with your own photo file placed next to this HTML file -->
+          <!-- EDIT HERE: replace "profile.png" with your own photo file placed next to this HTML file -->
           <img src="profile.png" alt="Quenie Clarabal" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="photo-fallback" style="display:none;">QC</div>
         </div>
